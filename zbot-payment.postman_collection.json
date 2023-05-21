@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "b7577d72-3960-46bd-a07d-c1689c3c6727",
+		"name": "zbot-payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "zbot",
+			"item": [
+				{
+					"name": "hello world",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": 219000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zbothost}}",
+							"host": [
+								"{{zbothost}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "start cron",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "secure-token",
+								"value": "{{securetoken}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bank_acc_id\": \"0389298842\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zbothost}}/start-sync-casso-cron-job",
+							"host": [
+								"{{zbothost}}"
+							],
+							"path": [
+								"start-sync-casso-cron-job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "secure-token",
+								"value": "{{securetoken}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zbothost}}/transaction",
+							"host": [
+								"{{zbothost}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "casso",
+			"item": [
+				{
+					"name": "syncCasso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Apikey AK_CS.d1f59f20f26411eda50bad6a777fc4ca.BHsBjlg9j5xapKhlm2T4uJyCpzLC4ldzsrgzGH1kGI1wMEO2FCN18T9hu8isSslSEVZQzFSP",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bank_acc_id\": \"0389298842\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://oauth.casso.vn/v2/sync",
+							"protocol": "https",
+							"host": [
+								"oauth",
+								"casso",
+								"vn"
+							],
+							"path": [
+								"v2",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

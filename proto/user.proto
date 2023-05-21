@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+message User {
+    string phoneNumber = 1;
+    string username = 2;
+    string expiredDate = 3;
+    string isBlocked = 4;
+}
+
+message UserList {
+   repeated User users = 1;
+}
+
+message Empty {}
+
+// FindOneUserByPhoneNumber
+message FindOneUserByPhoneNumberRequest {
+    string phoneNumber = 1;
+}
+
+message FindOneUserByPhoneNumberResponse {
+    User user = 1;
+}
+
+// UpdateUserByPhoneNumberAndExtendedMonth
+message UpdatedUser {
+    string phoneNumber = 1;
+    string extendedMonth = 2;
+}
+
+message UpdateUserByPhoneNumberAndExtendedMonthRequest {
+    repeated UpdatedUser updatedUsers = 1;
+}
+
+service UserRepository {
+    rpc findAllUsers (Empty) returns (UserList) {}
+    rpc findOneUserByPhoneNumber(FindOneUserByPhoneNumberRequest) returns (FindOneUserByPhoneNumberResponse) {}
+    rpc updateUserByPhoneNumberAndExtendedMonth(UpdateUserByPhoneNumberAndExtendedMonthRequest) returns (Empty) {}
+}

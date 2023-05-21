@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+message Pricing {
+    string price = 1;
+    string extendedMonth = 2;
+}
+
+message PricingList {
+   repeated Pricing pricings = 1;
+}
+
+message Empty {}
+
+// FindOnePricingByPrice
+message FindOnePricingByPriceRequest {
+    string price = 1;
+}
+
+message FindOnePricingByPriceResponse {
+    Pricing pricing = 1;
+}
+
+service PricingRepository {
+    rpc findAllPricings (Empty) returns (PricingList) {}
+    rpc findOnePricingByPrice(FindOnePricingByPriceRequest) returns (FindOnePricingByPriceResponse) {}
+}

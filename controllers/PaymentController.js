@@ -17,8 +17,7 @@ paymentController.route('/webhook/handler-bank-transfer').post(async (req, res, 
 
         return restService.getSuccessResponse(res, null, 'success');
     } catch (error) {
-        console.log(error);
-        next(error);
+        return restService.getServerErrorResponse(res);
     }
 });
 
